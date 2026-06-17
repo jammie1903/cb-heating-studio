@@ -114,6 +114,29 @@ export default defineConfig({
                   .schemaType('siteSettings')
                   .documentId(SITE_SETTINGS_ID)
               ),
+            S.divider(),
+            S.listItem()
+              .title('Developer Tasks')
+              .child(
+                S.list()
+                  .title('Developer Tasks')
+                  .items([
+                    S.listItem()
+                      .title('Open Tasks')
+                      .child(
+                        S.documentTypeList('task')
+                          .title('Open Tasks')
+                          .filter('_type == "task" && status != "done"')
+                      ),
+                    S.listItem()
+                      .title('Closed Tasks')
+                      .child(
+                        S.documentTypeList('task')
+                          .title('Closed Tasks')
+                          .filter('_type == "task" && status == "done"')
+                      ),
+                  ])
+              ),
           ]),
     }),
     visionTool(),
