@@ -1,4 +1,5 @@
-import {defineField, defineType} from 'sanity'
+import { defineField, defineType } from 'sanity'
+import { DeployButton } from '../components/DeployAction'
 
 export const siteSettingsType = defineType({
   name: 'siteSettings',
@@ -23,9 +24,24 @@ export const siteSettingsType = defineType({
       type: "color",
       description: "The theme color is used for the browser's address bar and other UI elements. It should be a color that represents your brand.",
       validation: (rule) => rule.required(),
-        options: {
-    disableAlpha: true
-  }
+      options: {
+        disableAlpha: true
+      }
     }),
+    defineField({
+      name: 'deployHookUrl',
+      title: 'Deploy Hook URL',
+      type: 'url',
+      description: 'The URL for the deploy hook to trigger a rebuild of the site.',
+      components: {
+        input: DeployButton
+      }
+    }),
+    defineField({
+      name: 'deployStatus',
+      title: ' ',
+      type: 'string',
+      hidden: true
+    })
   ]
 })
