@@ -104,6 +104,31 @@ const formBlock = defineField({
   },
 })
 
+const googleReviewsBlock = defineField({
+  name: 'googleReviewsBlock',
+  title: 'Google Reviews',
+  type: 'object',
+  fields: [
+    defineField({
+      name: 'dataId',
+      title: 'Data Id',
+      type: 'string',
+      description: 'The data ID for the Google Business Profile to display reviews from.',
+      validation: (rule) => rule.required(),
+    }),
+  ],
+  preview: {
+    select: {
+      dataId: 'dataId',
+    },
+    prepare({ dataId }) {
+      return {
+        title: dataId ? `Google Reviews for Data ID: ${dataId}` : 'Please enter a Data ID',
+      }
+    },
+  },
+})
+
 export const bodyField = () => defineField({
   name: 'body',
   type: 'array',
@@ -111,5 +136,6 @@ export const bodyField = () => defineField({
     { type: 'block' },
     imageBlock,
     formBlock,
+    googleReviewsBlock,
   ],
 })

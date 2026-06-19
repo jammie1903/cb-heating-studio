@@ -29,6 +29,13 @@ export const siteSettingsType = defineType({
       }
     }),
     defineField({
+      name: 'serpApiKey',
+      title: 'SERP API Key',
+      type: 'string',
+      description: 'The API key for accessing the SERP (Search Engine Results Page) API.',
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
       name: 'deployHookUrl',
       title: 'Deploy Hook URL',
       type: 'url',
