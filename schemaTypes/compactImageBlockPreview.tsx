@@ -1,15 +1,15 @@
-import {Box, Flex, Text} from '@sanity/ui'
-import type {PreviewProps} from 'sanity'
-import {SANITY_DATASET, SANITY_PROJECT_ID} from '../sanity.constants'
+import {Box, Flex, Text} from "@sanity/ui"
+import type {PreviewProps} from "sanity"
+import {SANITY_DATASET, SANITY_PROJECT_ID} from "../sanity.constants"
 
 function getImageUrlFromAssetRef(assetRef?: string): string | null {
-  if (!assetRef || !assetRef.startsWith('image-')) return null
+  if (!assetRef || !assetRef.startsWith("image-")) return null
 
   const refWithoutPrefix = assetRef.slice(6)
-  const lastDash = refWithoutPrefix.lastIndexOf('-')
+  const lastDash = refWithoutPrefix.lastIndexOf("-")
   if (lastDash === -1) return null
 
-  const secondLastDash = refWithoutPrefix.lastIndexOf('-', lastDash - 1)
+  const secondLastDash = refWithoutPrefix.lastIndexOf("-", lastDash - 1)
   if (secondLastDash === -1) return null
 
   const assetId = refWithoutPrefix.slice(0, secondLastDash)
@@ -25,8 +25,8 @@ export function CompactImageBlockPreview(props: PreviewProps) {
   const {title, subtitle} = props
   const asset = (props as PreviewProps & {asset?: any}).asset
   const thumbnailUrl = getImageUrlFromAssetRef(asset?._ref)
-  const safeTitle = typeof title === 'string' ? title : 'Image'
-  const safeSubtitle = typeof subtitle === 'string' ? subtitle : null
+  const safeTitle = typeof title === "string" ? title : "Image"
+  const safeSubtitle = typeof subtitle === "string" ? subtitle : null
 
   return (
     <Flex align="center" gap={2} padding={2}>
@@ -34,17 +34,17 @@ export function CompactImageBlockPreview(props: PreviewProps) {
         style={{
           width: 48,
           height: 48,
-          overflow: 'hidden',
+          overflow: "hidden",
           borderRadius: 4,
-          flex: '0 0 48px',
-          background: 'var(--card-muted-bg-color)',
+          flex: "0 0 48px",
+          background: "var(--card-muted-bg-color)",
         }}
       >
         {thumbnailUrl ? (
           <img
             src={thumbnailUrl}
             alt=""
-            style={{width: '100%', height: '100%', objectFit: 'cover', display: 'block'}}
+            style={{width: "100%", height: "100%", objectFit: "cover", display: "block"}}
           />
         ) : null}
       </Box>

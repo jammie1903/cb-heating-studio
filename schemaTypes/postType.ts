@@ -1,15 +1,15 @@
-import { bodyField, commonFields } from './common'
-import {defineField, defineType} from 'sanity'
+import { bodyField, commonFields } from "./common"
+import {defineField, defineType} from "sanity"
 
 export const postType = defineType({
-  name: 'post',
-  title: 'Post',
-  type: 'document',
+  name: "post",
+  title: "Post",
+  type: "document",
   fields: [
     ...commonFields(),
     defineField({
-      name: 'publishedAt',
-      type: 'datetime',
+      name: "publishedAt",
+      type: "datetime",
       initialValue: () => new Date().toISOString(),
       validation: (rule) => rule.required(),
     }),
