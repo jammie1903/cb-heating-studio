@@ -41,6 +41,12 @@ export const siteSettingsType = defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({
+      name: "googleSiteVerificationId",
+      title: "Google Site Verification ID",
+      type: "string",
+      description: "The Google Site Verification ID for verifying site ownership.",
+    }),
+    defineField({
       name: "deployHookUrl",
       title: "Deploy Hook URL",
       type: "url",
