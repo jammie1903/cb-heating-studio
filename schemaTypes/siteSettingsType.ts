@@ -29,6 +29,16 @@ export const siteSettingsType = defineType({
       }
     }),
     defineField({
+      name: "themeTextColor",
+      title: "Theme Text Color",
+      type: "color",
+      description: "The theme text color used to complement your theme color.",
+      validation: (rule) => rule.required(),
+      options: {
+        disableAlpha: true
+      }
+    }),
+    defineField({
       name: "headerImage",
       title: "Header Image",
       type: "image"
